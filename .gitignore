@@ -91,7 +91,7 @@ env.bak/
 venv.bak/
 
 # compiled output
-/node_modules
+/node-apis-service/node_modules
 package-lock.json
 
 # Logs

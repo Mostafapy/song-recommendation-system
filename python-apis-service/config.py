@@ -1,4 +1,8 @@
 import os
+from dotenv import load_dotenv
+
+# Load .env file
+load_dotenv()
 # 10 GENRES USED FOR CLASSIFICATION
 GENRES      = [ 'blues',
                 'classical',

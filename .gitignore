@@ -124,3 +124,8 @@ lerna-debug.log*
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+
+# ignore files of model
+python-apis-service/data/
+python-apis-service/utils/raw_data.pkl
+python-apis-service/utils/set.pkl

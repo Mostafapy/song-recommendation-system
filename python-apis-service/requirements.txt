@@ -2,11 +2,18 @@
 # Usage: pip install -r requirements.txt
 wheel == 0.36.2
 
-tinytag == 1.5.0
+librosa == 0.8.0
 
+torch == 1.7.1
+
+numpy == 1.20.1
+
+pandas == 1.2.2
 # Flask Framework
 Flask == 1.1.2
 
 python-dotenv == 0.15.0
+
+sklearn
 
 Werkzeug == 1.0.1

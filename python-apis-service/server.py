@@ -1,17 +1,12 @@
 import os
 import json
 from flask import Flask, request, jsonify, Response, flash
-from dotenv import load_dotenv
 from werkzeug.utils import secure_filename
 from tinytag import TinyTag 
-
-# Load .env file
-load_dotenv()
-
+from config import PORT, UPLOADPATH
 
 # new App
 app = Flask(__name__)
-app.config['UPLOAD_FOLDER'] = os.getenv("UPLOAD_PATH")
 
 @app.route("/api/v1/sound-analyzer", methods=["POST"])
 def sound_analyzer():
@@ -27,7 +22,7 @@ def sound_analyzer():
                "data": None,
             })
        filename = secure_filename(file.filename)
-       path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+       path = os.path.join(UPLOADPATH, filename)
        file.save(path)
 
        result = TinyTag.get(path)
@@ -48,7 +43,7 @@ def sound_analyzer():
         })
 
 # Port
-port = int(os.getenv("PORT"))
+port = int(PORT)
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=port, debug=True)

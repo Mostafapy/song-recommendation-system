@@ -21,7 +21,9 @@ def sound_analyzer():
                "data": None,
             })
        filename = secure_filename(file.filename)
-       path = os.path.join(UPLOADPATH, filename)
+
+       path = os.path.join(os.path.join(os.getcwd(), UPLOADPATH), filename)
+
        file.save(path)
        result = get_genre(path)
        # get maximum percent of type of genre 
@@ -48,8 +50,7 @@ def sound_analyzer():
         })
 
 # Port
-port = int(PORT)
-
 if __name__ == "__main__":
+    port = int(PORT)
     app.run(host='0.0.0.0', port=port, debug=True)
 

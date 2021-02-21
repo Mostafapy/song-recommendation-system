@@ -1,0 +1,13 @@
+# Python service .env file variables
+PORT = <VALUE>
+UPLOAD_PATH = ./uploads
+DATA_PATH  =   ./data/
+RAW_DATAPATH =   ./utils/raw_data.pkl
+SET_DATAPATH =   ./utils/set.pkl
+MODEL_PATH  =   ./model/net.pt
+
+
+# Nodejs service .env file variables
+NODE_ENV = <Value>
+PORT = <VALUE>
+MONGO_URI = <VALUE>

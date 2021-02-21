@@ -2,9 +2,8 @@ import os
 import json
 from flask import Flask, request, jsonify, Response, flash
 from werkzeug.utils import secure_filename
-from tinytag import TinyTag 
 from config import PORT, UPLOADPATH
-
+from get_genre import get_genre
 # new App
 app = Flask(__name__)
 
@@ -24,15 +23,21 @@ def sound_analyzer():
        filename = secure_filename(file.filename)
        path = os.path.join(UPLOADPATH, filename)
        file.save(path)
+       result = get_genre(path)
+       # get maximum percent of type of genre 
+       all_values = result.values()
+       max_value = max(all_values)
+       
+       # get genre of the max value percent
+       genre = list(result.keys())[list(result.values()).index(max_value)]
 
-       result = TinyTag.get(path)
-
+       # remove the uploaded file
        os.remove(path)
 
        return jsonify({
            "success": True,
-           "msg": 'selected file',
-           "data": json.loads(str(result)),
+           "msg": 'Successfully detect the genre of your music file',
+           "data": genre,
        })
 
     except Exception as _err:

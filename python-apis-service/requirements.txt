@@ -4,7 +4,7 @@ wheel == 0.36.2
 
 librosa == 0.8.0
 
-torch == 1.7.1
+torch == 1.7.1+cu101
 
 numpy == 1.20.1
 
@@ -15,5 +15,7 @@ Flask == 1.1.2
 python-dotenv == 0.15.0
 
 sklearn
+
+torchvision == 0.8.2+cu101
 
 Werkzeug == 1.0.1

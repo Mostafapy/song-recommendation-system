@@ -6,7 +6,7 @@ const morgan = require('morgan');
 const connectDB = require('./config/db');
 
 // Routes
-// const routes = require('./routes/index');
+const routes = require('./routes/index');
 
 // Load env vars
 dotenv.config({ path: '.env' });
@@ -36,7 +36,7 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 // Mount the routes
-// app.use(routes);
+app.use(routes);
 
 // Port
 const port = process.env.PORT || '3000';

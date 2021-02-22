@@ -11,3 +11,4 @@ MODEL_PATH  =   ./model/net.pt
 NODE_ENV = <Value>
 PORT = <VALUE>
 MONGO_URI = <VALUE>
+PYTHON_SERVICE_URI= http://pythonapi:4000/

@@ -1,0 +1,36 @@
+version: '3.3'
+services:
+  nodeapi:
+    build:
+      context: .
+      dockerfile: dockerfile
+    restart: always
+    # docker run -t is allow
+    tty: true
+    # application port, this is take value from env file
+    ports:
+      - "${PORT}:${PORT}"
+    networks:
+      - network1
+
+  pythonapi:
+    build:
+      context: .
+      dockerfile: dockerfile
+    restart: always
+    # docker run -t is allow
+    tty: true
+    # application port, this is take value from env file
+    ports:
+      - "${PORT}:${PORT}"
+    networks:
+      - network1
+  
+#Docker Networks
+networks:
+  # All container connect in a network
+  network1:
+    driver: bridge
+
+
+    

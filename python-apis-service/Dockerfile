@@ -6,10 +6,8 @@ WORKDIR /python-service
 
 COPY requirements.txt /python-service/requirements.txt
 
-COPY . /python-service/
-
-RUN source /env/bin/activate
-
 RUN pip install -r requirements.txt -f https://download.pytorch.org/whl/torch_stable.html
+
+COPY . /python-service/
 
 CMD ["python", "server.py"]

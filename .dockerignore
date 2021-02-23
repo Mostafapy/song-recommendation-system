@@ -1,7 +1,7 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 .vscode/
 .editorconfig
-package-lock.json
+/node-apis-service/package-lock.json
 
 # compiled output
 /dist
@@ -46,12 +46,12 @@ Thumbs.db
 .idea
 
 
-__pycache__
+/python-apis-service/__pycache__
 *.pyc
 *.pyo
 *.pyd
 .Python
-env
+/python-apis-service/env
 pip-log.txt
 pip-delete-this-directory.txt
 .tox

@@ -35,7 +35,9 @@ def main():
     TEST_SIZE   = len(x_test)
 
     net = genreNet()
-    net.cuda()
+    # Uncomment from cpu to cuda if you have nvidia
+    # net.cuda()
+    net.cpu()
 
     criterion   = torch.nn.CrossEntropyLoss()
     optimizer   = torch.optim.RMSprop(net.parameters(), lr=1e-4)
@@ -44,8 +46,11 @@ def main():
     BATCH_SIZE  = 16
 
     for epoch in range(EPOCH_NUM):
-        inp_train, out_train    = Variable(torch.from_numpy(x_train)).float().cuda(), Variable(torch.from_numpy(y_train)).long().cuda()
-        inp_valid, out_valid    = Variable(torch.from_numpy(x_valid)).float().cuda(), Variable(torch.from_numpy(y_valid)).long().cuda()
+        # Uncomment from cpu to cuda if you have nvidia
+        #inp_train, out_train    = Variable(torch.from_numpy(x_train)).float().cuda(), Variable(torch.from_numpy(y_train)).long().cuda()
+        inp_train, out_train    = Variable(torch.from_numpy(x_train)).float().cpu(), Variable(torch.from_numpy(y_train)).long().cpu()
+        #inp_valid, out_valid    = Variable(torch.from_numpy(x_valid)).float().cuda(), Variable(torch.from_numpy(y_valid)).long().cuda()
+        inp_valid, out_valid    = Variable(torch.from_numpy(x_valid)).float().cpu(), Variable(torch.from_numpy(y_valid)).long().cpu()
         # ------------------------------------------------------------------------------------------------- #
         ## TRAIN PHASE # TRAIN PHASE # TRAIN PHASE # TRAIN PHASE # TRAIN PHASE # TRAIN PHASE # TRAIN PHASE  #
         # ------------------------------------------------------------------------------------------------- #
@@ -102,7 +107,9 @@ def main():
     # ------------------------------------------------------------------------------------------------- #
     ## EVALUATE TEST ACCURACY
     # ------------------------------------------------------------------------------------------------- #
-    inp_test, out_test = Variable(torch.from_numpy(x_test)).float().cuda(), Variable(torch.from_numpy(y_test)).long().cuda()
+    # Uncomment from cpu to cuda if you have nvidia
+    #inp_test, out_test = Variable(torch.from_numpy(x_test)).float().cuda(), Variable(torch.from_numpy(y_test)).long().cuda()
+    inp_test, out_test = Variable(torch.from_numpy(x_test)).float().cpu(), Variable(torch.from_numpy(y_test)).long().cpu()
     test_sum = 0
     for i in range(0, TEST_SIZE, BATCH_SIZE):
         pred_test       = net(inp_test[i:i + BATCH_SIZE])

@@ -2,27 +2,27 @@ version: '3.3'
 services:
   nodeapi:
     build:
-      context: .
-      dockerfile: dockerfile
+      context: ./node-apis-service
+      dockerfile: Dockerfile
     restart: always
     # docker run -t is allow
     tty: true
     # application port, this is take value from env file
     ports:
-      - "${PORT}:${PORT}"
+      - 3000:3000
     networks:
       - network1
 
   pythonapi:
     build:
-      context: .
-      dockerfile: dockerfile
+      context: ./python-apis-service
+      dockerfile: Dockerfile
     restart: always
     # docker run -t is allow
     tty: true
     # application port, this is take value from env file
     ports:
-      - "${PORT}:${PORT}"
+      - 4000:4000
     networks:
       - network1
   
